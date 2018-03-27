@@ -1,0 +1,25 @@
+<form [formGroup]="categoryFormGroup">
+    <h1 mat-dialog-title style="text-align:center">Add Category</h1>
+     <mat-dialog-content>
+      <div class="edit-container">   
+      <mat-form-field>
+        <input matInput formControlName="categoryName" placeholder="Enter Category Name">
+      </mat-form-field>
+      <mat-checkbox formControlName="isTechnology" 
+        [checked]= "isChecked"
+        (change)="onChange($event)" >Is Technology</mat-checkbox>
+      <!-- <mat-form-field *ngIf = "isChecked" >
+        <input 
+          matInput 
+          formControlName="technologyName"
+          placeholder="Enter Technology Name">
+      </mat-form-field> -->
+      </div>
+    </mat-dialog-content>
+    <div class="button-row">
+    <mat-dialog-actions>
+      <button  mat-raised-button color = "primary" type="button" (click) ="submit()" [disabled]="!categoryFormGroup.valid" mat-dialog-close >Add</button>
+      <button  mat-raised-button color="primary" type="button" mat-dialog-close>Cancel</button>
+    </mat-dialog-actions>
+  </div>
+  </form>

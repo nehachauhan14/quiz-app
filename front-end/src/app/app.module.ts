@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 // services
 import {HttpWrapperService} from './services/http-wrapper.service';
+import {AuthService} from './services/authservice.service';
 
 // Components
 import {AppComponent} from './app.component';
@@ -21,14 +22,14 @@ import { CategorySelectComponent } from './category-select/category-select.compo
 import { TeamListComponent } from './team-list/team-list.component';
 import { PostComponent } from './post/post.component';
 import {QuizSelectComponent} from './quiz-select/quiz-select.component';
-import { AddNewTeamDialogComponent, DIALOG_DATA } from './add-new-team-dialog/add-new-team-dialog.component';
+import { AddNewTeamDialogComponent} from './add-new-team-dialog/add-new-team-dialog.component';
+import { AddNewCategoryDialogComponent } from './add-new-category-dialog/add-new-category-dialog.component';
 
 // Material Imports
 import {MatSelectModule , MatDialogModule, MatButtonModule, MatCheckboxModule, MatCardModule,
         MatExpansionModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule,
         MatNativeDateModule, MatChipsModule, MatDialog } from '@angular/material';
 
-import {AuthService} from './services/authservice.service';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {AuthService} from './services/authservice.service';
     CategorySelectComponent,
     TeamListComponent,
     AddNewTeamDialogComponent,
-    PostComponent
+    PostComponent,
+    AddNewCategoryDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +117,8 @@ import {AuthService} from './services/authservice.service';
     HttpWrapperService,
     AuthService
   ],
-  entryComponents: [AddNewTeamDialogComponent],
+  entryComponents: [AddNewTeamDialogComponent,
+                    AddNewCategoryDialogComponent],
   bootstrap: [AppComponent]
 })
 
