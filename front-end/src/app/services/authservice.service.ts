@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {Router} from '@angular/router';
+import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
@@ -49,6 +50,7 @@ export class AuthService {
             console.log(request);
             console.log(userData);
             alert('REGISTRATION SUCCESSFUL');
+            // this.Response = request;
             // this.sampleResponse = request;
             this._router.navigate(['/sample']);
         });

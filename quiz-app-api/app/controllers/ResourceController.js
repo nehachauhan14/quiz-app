@@ -15,7 +15,6 @@ class ResourceController {
             })
         })
     }
-
     index() {
         return new Promise((resolve, reject) => {
             var model = this.model
@@ -29,7 +28,6 @@ class ResourceController {
     }
 
     list(req, res) {
-    	console.log(this)
         return new Promise((resolve, reject) => {
             var model = this.model
             model.find({}, (err, response) => {
@@ -56,13 +54,32 @@ class ResourceController {
         })
     }
 
-    update() {
+    update(req) {
+        return new Promise((resolve, reject) => {
+            var model = this.model
+            model.update({ _id: req.params.id}, req.body,(err, response) => {
+                if (err) {
+                    reject(err)
+                }
+
+                resolve(response);
+            })
+        })
         console.log("this is the value of this" + this)
         console.log('update called');
         //res.send('update called from resource controller')
     }
 
-    delete() {
+    delete(id) {
+        return new Promise((resolve, reject) => {
+            var model = this.model
+            model.remove({ _id: id }, (err, response) => {
+                if (err) {
+                   reject(err)
+                }
+                resolve(response);
+            })
+        })
 
     }
 

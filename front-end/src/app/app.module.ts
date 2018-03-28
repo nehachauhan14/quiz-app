@@ -18,8 +18,12 @@ import {NavBarComponent} from './nav-bar/nav-bar.component';
 import {ManageQuizComponent} from './manage-quiz/manage-quiz.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {SampleComponent} from './sample/sample.component';
+
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
+
 import { CategorySelectComponent } from './category-select/category-select.component';
+
+import {AuthService} from './services/authservice.service';
 import { TeamListComponent } from './team-list/team-list.component';
 import { PostComponent } from './post/post.component';
 import {QuizSelectComponent} from './quiz-select/quiz-select.component';
@@ -27,10 +31,9 @@ import { AddNewCategoryDialogComponent } from './add-new-category-dialog/add-new
 import { AddNewTeamDialogComponent, DIALOG_DATA } from './add-new-team-dialog/add-new-team-dialog.component';
 
 // Material Imports
-import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatCheckboxModule, MatCardModule,
-        MatExpansionModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule,
-        MatNativeDateModule, MatChipsModule, MatDialog, MatRadioModule } from '@angular/material';
-
+import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRadioModule,
+  MatCardModule, MatExpansionModule, MatIconModule, MatFormFieldModule,
+  MatInputModule, MatDatepickerModule, MatNativeDateModule, MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -42,11 +45,12 @@ import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatChe
     NotFoundComponent,
     SampleComponent,
     AddQuestionsComponent,
+    QuizComponent,
     LoginComponent,
     CategorySelectComponent,
+    PostComponent,
     TeamListComponent,
     AddNewTeamDialogComponent,
-    PostComponent,
     AddNewCategoryDialogComponent
   ],
   imports: [
@@ -79,7 +83,7 @@ import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatChe
       },
     {
       path: 'managequiz',
-      component : ManageQuizComponent
+      component : Manage 
     },
     {
       path: 'home' ,
@@ -93,7 +97,8 @@ import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatChe
       path: 'addques' ,
       component: AddQuestionsComponent
     } ,
-      path : 'quiz-select',
+    {
+      path: 'quiz-select',
       component: QuizSelectComponent
     },
     {
@@ -129,8 +134,4 @@ import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatChe
 export class AppModule {
 constructor() {
 }
-
-// opendialog() {
-//   this.dailog.open();
-//  }
 }
