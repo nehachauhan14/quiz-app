@@ -5,8 +5,9 @@ var category = db.Schema({
         type: String,
         required: true,
     },
-    technology: {
-        type: String
+    isTechnology:{
+    	type: Boolean,
+    	default: true,
     },
     createdAt: {
         type: Date,

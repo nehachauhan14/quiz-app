@@ -1,0 +1,79 @@
+<div class="row Absolute-Center is-Responsive">
+  <div class="col-md-6"></div>
+  <div class="col-md-12">
+    <mat-card class="">
+      <mat-card-title>
+        Add Questions
+      </mat-card-title>
+      <form [formGroup]="addQuesForm" enctype="multipart/form-data" method="post">
+        <mat-card-content>
+          <div class="edit-container">
+            <mat-form-field>
+              <mat-select placeholder="Select Category" formControlName="category" id="category" (change)="changeCat($event)">
+                <mat-option *ngFor="let category of categories" [value]="category.value">
+                  {{category.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="edit-container" hidden id="tech">
+            <mat-form-field>
+              <mat-select placeholder="Select Technology" formControlName="tech">
+                <mat-option *ngFor="let technology of technologies" [value]="technology.value">
+                  {{technology.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-form-field>
+            <mat-select placeholder="Difficulty Level" formControlName="difficulty" id="difficulty">
+              <mat-option *ngFor="let difficulty of difficulties" [value]="difficulty.value">
+                {{difficulty.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="edit-container">
+            <mat-form-field>
+              <input type="textarea" matInput formControlName="desc" class="full-width" placeholder="Enter Question,s Description" />
+            </mat-form-field>
+          </div>
+          <input type="file" id="uploadPicture" formControlName="quesImg" name="img" accept="image/jpeg, .jpeg, image/png, .png, image/pjpeg, .jpg">
+          <div formGroupName="options" id="options">
+            <div class="edit-container" formGroupName="optionOne" id="optionOne">
+              <mat-form-field>
+                <input type="text" matInput formControlName="option" placeholder="Option One" />
+              </mat-form-field>
+              <input type="checkbox" checked name="isAnswer" formControlName="isAnswer" />Mark As Answer
+            </div>
+            <div class="edit-container" formGroupName="optionTwo" hidden id="optionTwo">
+              <mat-form-field>
+                <input type="text" matInput formControlName="option" placeholder="Option Two" />
+              </mat-form-field>
+              <input type="checkbox" name="isAnswer" formControlName="isAnswer" />Mark As Answer
+            </div>
+            <div class="edit-container" hidden formGroupName="optionThree" id="optionThree">
+              <mat-form-field>
+                <input type="text" matInput formControlName="option" placeholder="Option Three" />
+              </mat-form-field>
+              <input type="checkbox" name="isAnswer" formControlName="isAnswer" />Mark As Answer
+            </div>
+            <div class="edit-container" hidden formGroupName="optionFour" id="optionFour">
+              <mat-form-field>
+                <input type="text" matInput formControlName="option" placeholder="Option Four" />
+              </mat-form-field>
+              <input type="checkbox" name="isAnswer" formControlName="isAnswer" />Mark As Answer
+            </div>
+          </div>
+          <div class="button-row">
+            <button mat-raised-button (click)="addOption()" color="primary">Add Option </button>
+          </div>
+          <br>
+          <div class="button-row">
+            <button mat-raised-button type="submit" (click)="submit(addQuesForm)" color="primary" prevent-default>Create</button>
+          </div>
+        </mat-card-content>
+      </form>
+    </mat-card>
+  </div>
+  <div class="col-md-3"></div>
+</div>

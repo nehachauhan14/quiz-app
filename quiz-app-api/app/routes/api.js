@@ -32,6 +32,11 @@ apiRoutes = function(router) {
     // // router.get('/quiz/:_id', api.quiz.show);
     // router.get('/quiz/update', api.quiz.update);
 
+     router.post('/category', api.category.create);
+     router.get('/category/edit/:_id', api.category.show);
+    // router.post('/category/update/:_id', api.category.update);
+     router.get('/category', api.category.list);
+
 
     return router;
 };

@@ -3,7 +3,7 @@ var users = require('./api/users')
 var analytics = require('./api/analytics')
 var user = require('./api/UserController')
 var quiz = require('./api/QuizController')
-
+var category = require('./api/CategoryController')
 var clients = require('./admin/clients')
 var adminUsers = require('./admin/adminUsers')
 module.exports = {
@@ -16,6 +16,7 @@ module.exports = {
     analytics: analytics,
     user: user,
     quiz: quiz,
+    category: category,
 
     // Admin Endpoints
     clients: clients,

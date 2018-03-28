@@ -18,18 +18,18 @@ import {NavBarComponent} from './nav-bar/nav-bar.component';
 import {ManageQuizComponent} from './manage-quiz/manage-quiz.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {SampleComponent} from './sample/sample.component';
+import { AddQuestionsComponent } from './add-questions/add-questions.component';
 import { CategorySelectComponent } from './category-select/category-select.component';
 import { TeamListComponent } from './team-list/team-list.component';
 import { PostComponent } from './post/post.component';
 import {QuizSelectComponent} from './quiz-select/quiz-select.component';
-import { AddNewTeamDialogComponent} from './add-new-team-dialog/add-new-team-dialog.component';
 import { AddNewCategoryDialogComponent } from './add-new-category-dialog/add-new-category-dialog.component';
+import { AddNewTeamDialogComponent, DIALOG_DATA } from './add-new-team-dialog/add-new-team-dialog.component';
 
 // Material Imports
-import {MatSelectModule , MatDialogModule, MatButtonModule, MatCheckboxModule, MatCardModule,
+import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatCheckboxModule, MatCardModule,
         MatExpansionModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule,
-        MatNativeDateModule, MatChipsModule, MatDialog } from '@angular/material';
-
+        MatNativeDateModule, MatChipsModule, MatDialog, MatRadioModule } from '@angular/material';
 
 
 @NgModule({
@@ -41,7 +41,7 @@ import {MatSelectModule , MatDialogModule, MatButtonModule, MatCheckboxModule, M
     QuizSelectComponent,
     NotFoundComponent,
     SampleComponent,
-    QuizComponent,
+    AddQuestionsComponent,
     LoginComponent,
     CategorySelectComponent,
     TeamListComponent,
@@ -65,6 +65,7 @@ import {MatSelectModule , MatDialogModule, MatButtonModule, MatCheckboxModule, M
     ReactiveFormsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatRadioModule,
     MatExpansionModule,
     MatDialogModule,
     MatIconModule,
@@ -89,7 +90,10 @@ import {MatSelectModule , MatDialogModule, MatButtonModule, MatCheckboxModule, M
       component: SampleComponent
     } ,
     {
-      path: 'quiz-select',
+      path: 'addques' ,
+      component: AddQuestionsComponent
+    } ,
+      path : 'quiz-select',
       component: QuizSelectComponent
     },
     {
@@ -106,23 +110,27 @@ import {MatSelectModule , MatDialogModule, MatButtonModule, MatCheckboxModule, M
       path: 'post',
       component: PostComponent
     },
-      {
+    {
         path: '**',
         component: NotFoundComponent
-    }
-    ]),
-    HttpModule
-  ],
+    }),
   providers: [
     HttpWrapperService,
     AuthService
   ],
-  entryComponents: [AddNewTeamDialogComponent,
-                    AddNewCategoryDialogComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+  entryComponents: [
+                      AddNewTeamDialogComponent, 
+                      AddNewCategoryDialogComponent 
+                    ],
 })
 
 export class AppModule {
 constructor() {
 }
+
+// opendialog() {
+//   this.dailog.open();
+//  }
 }
