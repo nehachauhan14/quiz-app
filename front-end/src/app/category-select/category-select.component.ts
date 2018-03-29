@@ -18,6 +18,7 @@ categorylist = [{
                 id: 3,
                 name: 'DBMS'
               }];
+
 dialogRef: MatDialogRef<AddNewCategoryDialogComponent>;
 
 @Input() showMePartially: boolean;

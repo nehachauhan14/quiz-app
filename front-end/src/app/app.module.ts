@@ -39,6 +39,7 @@ import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatChe
     RegisterComponent,
     ManageQuizComponent,
     QuizSelectComponent,
+    QuizComponent,
     NotFoundComponent,
     SampleComponent,
     AddQuestionsComponent,
@@ -76,27 +77,22 @@ import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatChe
       {
         path: '',
         component: RegisterComponent
-      },
-    {
+      }, {
       path: 'managequiz',
       component : ManageQuizComponent
-    },
-    {
+    }, {
       path: 'home' ,
       component: RegisterComponent
-    } ,
-    {
+    }, {
       path: 'sample' ,
       component: SampleComponent
-    } ,
-    {
+    }, {
       path: 'addques' ,
       component: AddQuestionsComponent
-    } ,
+    }, {
       path : 'quiz-select',
       component: QuizSelectComponent
-    },
-    {
+    }, {
       path: 'login' ,
       component: LoginComponent
     }, {
@@ -105,32 +101,24 @@ import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatChe
     }, {
       path: 'team',
       component: TeamListComponent
-    },
-    {
+    }, {
       path: 'post',
       component: PostComponent
-    },
-    {
+    }, {
         path: '**',
         component: NotFoundComponent
-    }),
-  providers: [
+    }])
+  ],
+providers: [
     HttpWrapperService,
     AuthService
   ],
   bootstrap: [AppComponent],
-
-  entryComponents: [
-                      AddNewTeamDialogComponent, 
-                      AddNewCategoryDialogComponent 
-                    ],
+  entryComponents: [ AddNewTeamDialogComponent, AddNewCategoryDialogComponent ],
 })
 
 export class AppModule {
 constructor() {
 }
 
-// opendialog() {
-//   this.dailog.open();
-//  }
 }

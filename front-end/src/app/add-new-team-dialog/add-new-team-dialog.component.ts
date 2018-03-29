@@ -28,9 +28,9 @@ export class AddNewTeamDialogComponent implements OnInit {
 
 submit() {
   let name = this.firstFormGroup.controls.teamName.value ;
-  let teamMember = this.firstFormGroup.controls.member.value ; 
+  let teamMember = this.firstFormGroup.controls.member.value ;
   console.log(name + ' ' + teamMember );
-  // Need to access service once created by node team 
+  // Need to access service once created by node team
 }
 
 }

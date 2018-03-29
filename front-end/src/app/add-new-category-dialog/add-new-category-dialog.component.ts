@@ -18,7 +18,7 @@ export class AddNewCategoryDialogComponent implements OnInit {
       this.categoryFormGroup = this._fb.group({
       categoryName : ['' , [Validators.required]],
       isTechnology: ['', []],
-      technologyName : ['', [Validators.required]]
+      // technologyName : ['', [Validators.required]]
     });
   }
 
@@ -28,5 +28,6 @@ export class AddNewCategoryDialogComponent implements OnInit {
 
   submit() {
     console.log('form Submitted');
+    
   }
 }
