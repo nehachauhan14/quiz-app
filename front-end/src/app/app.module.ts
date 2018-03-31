@@ -123,5 +123,4 @@ providers: [
 export class AppModule {
 constructor() {
 }
-
 }
