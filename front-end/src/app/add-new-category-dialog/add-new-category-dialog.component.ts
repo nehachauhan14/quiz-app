@@ -18,7 +18,7 @@ export class AddNewCategoryDialogComponent implements OnInit {
   isChecked = false;
 
   constructor(private _fb: FormBuilder,
-              private _http: Http) { }
+              private _http: HttpWrapperService) { }
 
 
   ngOnInit() {
