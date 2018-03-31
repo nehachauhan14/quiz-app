@@ -28,7 +28,6 @@ dialogRef: MatDialogRef<AddNewCategoryDialogComponent>;
   addNewCategory(): void {
     this.dialogRef = this._dialog.open(AddNewCategoryDialogComponent, {
       width : '500px' ,
-      data : 'fake data',
       hasBackdrop : false
     });
   }

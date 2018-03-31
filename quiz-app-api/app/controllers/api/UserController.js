@@ -35,8 +35,8 @@ user = {
     },
     session: (req, res, next) => {
         User.findOne({
-                "email": req.body.email
-            },
+            "email": req.body.email
+        },
             (err, result) => {
                 if (err) {
                     return next(err)
@@ -56,7 +56,7 @@ user = {
                         name: result.name
                     }, config.secret)
                     console.log(token);
-                    res.json(token) 
+                    res.json(token)
                 })
             })
     },
@@ -66,12 +66,12 @@ user = {
         }
         var auth = jwt.decode(req.headers['x-auth'], config.secret)
         User.findOne({
-                "email": auth.email
-            },
+            "email": auth.email
+        },
             (err, result) => {
                 if (err) {
                     return next(err)
-                }                
+                }
                 res.json(result) // TODO: Vishal // Change the response, send the password as well
             })
     },

@@ -27,10 +27,9 @@ import { AddNewCategoryDialogComponent } from './add-new-category-dialog/add-new
 import { AddNewTeamDialogComponent, DIALOG_DATA } from './add-new-team-dialog/add-new-team-dialog.component';
 
 // Material Imports
-import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatCheckboxModule, MatCardModule,
-        MatExpansionModule, MatIconModule, MatFormFieldModule, MatInputModule, MatDatepickerModule,
-        MatNativeDateModule, MatChipsModule, MatDialog, MatRadioModule } from '@angular/material';
-
+import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRadioModule,
+  MatCardModule, MatExpansionModule, MatIconModule, MatFormFieldModule,
+  MatInputModule, MatDatepickerModule, MatNativeDateModule, MatChipsModule , MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -45,6 +44,7 @@ import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatChe
     AddQuestionsComponent,
     LoginComponent,
     CategorySelectComponent,
+    PostComponent,
     TeamListComponent,
     AddNewTeamDialogComponent,
     PostComponent,
@@ -89,8 +89,9 @@ import {MatSelectModule , MatFormField, MatDialogModule, MatButtonModule, MatChe
     }, {
       path: 'addques' ,
       component: AddQuestionsComponent
-    }, {
-      path : 'quiz-select',
+    } ,
+    {
+      path: 'quiz-select',
       component: QuizSelectComponent
     }, {
       path: 'login' ,

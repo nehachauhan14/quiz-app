@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
         [
         Validators.required,
         Validators.minLength(7),
-        Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#@$?%!_])[a-zA-Z0-9#@$?%!_]+$/)
+        Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#@$^?%!_])[a-zA-Z0-9#@^$?%!_]+$/)
         ]),
 
       name: new FormControl('',

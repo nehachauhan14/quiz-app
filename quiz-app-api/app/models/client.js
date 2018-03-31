@@ -1,4 +1,4 @@
-var db = require('./db')
+var db = require("./db");
 
 var client = db.Schema({
     clientName: {
@@ -46,7 +46,7 @@ var client = db.Schema({
     users: [{
         name: {
             type: String,
-            //required: true
+            // required: true
         },
         email: {
             type: String,
@@ -56,20 +56,20 @@ var client = db.Schema({
         password: {
             type: String,
             required: true,
-            //select: false  // TODO : Vishal : Redo this, find a way to select more fields
+            // select: false  // TODO : Vishal : Redo this, find a way to select more fields
         },
         userType: {
             type: String,
             required: true,
-            enum: ['USER', 'ADMIN', 'SUPERADMIN'],
-            default: 'USER'
+            enum: ["USER", "ADMIN", "SUPERADMIN"],
+            default: "USER"
         },
         verified: {
             type: Boolean,
             default: false
 
         }
-    }],  
+    }],
     createdAt: {
         type: Date,
         default: new Date(),
@@ -80,4 +80,4 @@ var client = db.Schema({
     }
 })
 
-module.exports = db.model('Client', client)
+module.exports = db.model("Client", client)

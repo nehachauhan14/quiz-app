@@ -1,4 +1,4 @@
-var db = require('./db')
+var db = require("./db")
 var team = db.Schema({
     name: {
         type: String,
@@ -7,7 +7,7 @@ var team = db.Schema({
     members: {
         [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            ref: "User"
         }]
     },
     createdAt: {
@@ -21,4 +21,4 @@ var team = db.Schema({
 })
 
 
-module.exports = db.model('Team', team)
+module.exports = db.model("Team", team)

@@ -1,71 +1,96 @@
 class ResourceController {
 
-    constructor(model) {
-        this.model = model;
-    }
+  constructor(model) {
+    this.Model = model;
+  };
 
-    create(data) {
-        return new Promise((resolve, reject) => {
-            var model = new this.model(data)
-            model.save((err, response) => {
-                if (err) {
-                    reject(err)
-                }
-                resolve(response);
-            })
-        })
-    }
+  create(data) {
+    return new Promise((resolve, reject) => {
+      var model = new this.Model(data);
+      model.save((err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      });
+    })
+      .catch((e) => {
+        console.log(e)
+      })
+  };
 
-    index() {
-        return new Promise((resolve, reject) => {
-            var model = this.model
-            model.find({}, (err, response) => {
-                if (err) {
-                    reject(err)
-                }
-                resolve(response);
-            })
-        })
-    }
+  index() {
+    return new Promise((resolve, reject) => {
+      var model = this.Model
+      model.find({}, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      })
+    })
+      .catch((e) => { })
+  };
 
-    list(req, res) {
-    	console.log(this)
-        return new Promise((resolve, reject) => {
-            var model = this.model
-            model.find({}, (err, response) => {
-                if (err) {
-                    reject(err)
-                }
-                resolve(response);
-            })
-        }).then((result) => {
-        	console.log(result)
-            res.send(result);
-        });
-    }
+  list(req, res) {
+    return new Promise((resolve, reject) => {
+      var model = this.Model
+      model.find({}, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      })
+    })
+      .then((result) => {
+        console.log(result)
+        res.send(result);
+      })
+      .catch((e) => { })
+  };
 
-    show(id) {
-        return new Promise((resolve, reject) => {
-            var model = this.model
-            model.find({ _id: id }, (err, response) => {
-                if (err) {
-                    reject(err)
-                }
-                resolve(response);
-            })
-        })
-    }
+  show(id) {
+    return new Promise((resolve, reject) => {
+      var model = this.Model
+      model.find({
+        "_id": id
+      }, (err, response) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(response);
+      })
+    });
+  };
 
-    update() {
-        console.log("this is the value of this" + this)
-        console.log('update called');
-        //res.send('update called from resource controller')
-    }
+  update(req) {
+    return new Promise((resolve, reject) => {
+      var model = this.model
+      model.update({ _id: req.params.id }, req.body, (err, response) => {
+        if (err) {
+          reject(err)
+        }
 
-    delete() {
+        resolve(response);
+      })
+    })
+    console.log("this is the value of this" + this)
+    console.log('update called');
+    //res.send('update called from resource controller')
+  }
 
-    }
+  delete(id) {
+    return new Promise((resolve, reject) => {
+      var model = this.model
+      model.remove({ _id: id }, (err, response) => {
+        if (err) {
+          reject(err)
+        }
+        resolve(response);
+      })
+    })
+  };
+};
 
-}
 
 module.exports = ResourceController;
