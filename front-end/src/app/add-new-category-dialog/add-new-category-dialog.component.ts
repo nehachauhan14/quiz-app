@@ -43,7 +43,7 @@ export class AddNewCategoryDialogComponent implements OnInit {
 
   submit() {
     let header = new Headers();
-    //header.append('token', localStorage.getItem('tokenfordetails'));
+    //    header.append('x-auth', localStorage.getItem('tokenfordetails'));
     header.append('Content-Type': 'application/json; charset=utf-8');
     const options = new RequestOptions({ headers: header });
     let data = {
@@ -52,6 +52,7 @@ export class AddNewCategoryDialogComponent implements OnInit {
     };
 
     this._http.post(this.adminUrl, data, options).subscribe((response) =>
-      console.log(response));
+      console.log(response));    
+    
   }
 }
