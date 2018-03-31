@@ -31,6 +31,7 @@ import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRa
   MatCardModule, MatExpansionModule, MatIconModule, MatFormFieldModule,
   MatInputModule, MatDatepickerModule, MatNativeDateModule, MatChipsModule , MatDialogModule} from '@angular/material';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,12 +43,13 @@ import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRa
     NotFoundComponent,
     SampleComponent,
     AddQuestionsComponent,
+
+    QuizComponent,
     LoginComponent,
     CategorySelectComponent,
     PostComponent,
     TeamListComponent,
     AddNewTeamDialogComponent,
-    PostComponent,
     AddNewCategoryDialogComponent
   ],
   imports: [
