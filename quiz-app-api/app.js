@@ -15,13 +15,14 @@ const path = require("path");
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, x-auth, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     next();
 });
 
 app.use(bodyParser.json({"limit": 153791147}));
 app.use(bodyParser.urlencoded({"extended": true, "limit": 153791147}));
 
-const port = process.env.PORT || 1818;
+const port = process.env.PORT || 1830;
 
 const server = app.listen(port, function () {
     console.log(`Magic begins at port ${port}`);

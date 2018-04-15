@@ -43,33 +43,33 @@
               <mat-form-field>
                 <input type="text" matInput formControlName="option" placeholder="Option One" />
               </mat-form-field>
-              <input type="checkbox" checked name="isAnswer" formControlName="isAnswer" />Mark As Answer
+              <mat-checkbox name="isAnswer" formControlName="isAnswer" >Mark As Answer</mat-checkbox>
             </div>
             <div class="edit-container" formGroupName="optionTwo" hidden id="optionTwo">
               <mat-form-field>
                 <input type="text" matInput formControlName="option" placeholder="Option Two" />
               </mat-form-field>
-              <input type="checkbox" name="isAnswer" formControlName="isAnswer" />Mark As Answer
+              <mat-checkbox name="isAnswer" formControlName="isAnswer" >Mark As Answer</mat-checkbox>
             </div>
             <div class="edit-container" hidden formGroupName="optionThree" id="optionThree">
               <mat-form-field>
                 <input type="text" matInput formControlName="option" placeholder="Option Three" />
               </mat-form-field>
-              <input type="checkbox" name="isAnswer" formControlName="isAnswer" />Mark As Answer
+              <mat-checkbox name="isAnswer" formControlName="isAnswer" >Mark As Answer</mat-checkbox>
             </div>
             <div class="edit-container" hidden formGroupName="optionFour" id="optionFour">
               <mat-form-field>
                 <input type="text" matInput formControlName="option" placeholder="Option Four" />
               </mat-form-field>
-              <input type="checkbox" name="isAnswer" formControlName="isAnswer" />Mark As Answer
+              <mat-checkbox name="isAnswer" formControlName="isAnswer" >Mark As Answer</mat-checkbox>
             </div>
           </div>
           <div class="button-row">
-            <button mat-raised-button (click)="addOption()" color="primary">Add Option </button>
+            <button mat-raised-button (click)="addOption()" class="btn-orng">Add Option </button>
           </div>
           <br>
           <div class="button-row">
-            <button mat-raised-button type="submit" (click)="submit(addQuesForm)" color="primary" prevent-default>Create</button>
+            <button mat-raised-button type="submit" (click)="submit(addQuesForm)" class="btn-orng" prevent-default>Create</button>
           </div>
         </mat-card-content>
       </form>

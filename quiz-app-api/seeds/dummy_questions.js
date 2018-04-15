@@ -48,14 +48,16 @@ var questions = [
   }
 ]
 
-questions.map(function (data) {
-  Questions
-    .create(data, function (err, doc) {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      console.log("Bulk Updated for Quizes");
-      console.log(doc)
-    });
-});
+for (let i = 0; i < 15; i++) {
+  questions.map(function (data) {
+    Questions
+      .create(data, function (err, doc) {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        console.log("Bulk Updated for Questions");
+        console.log(doc)
+      });
+  });
+}

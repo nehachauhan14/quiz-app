@@ -1,3 +1,4 @@
+@import "../../_variable.scss";
 .filter {
     margin-top: 10px;
     margin-bottom: 20px;
@@ -17,5 +18,5 @@ mat-chip {
     
   }
 .chipbg{
-    background-color: #ff4081;
+    background-color: $accent-color;
 }

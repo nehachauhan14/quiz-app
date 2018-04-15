@@ -9,13 +9,26 @@ import {AuthService} from '../services/authservice.service';
 export class ManageQuizComponent implements OnInit {
 
   ngOnInit() {
-  }
+    
+      }
   constructor(private auth: AuthService) {
 
   }
-
-  logoutmethod() {
-  this.auth.logout();
+  logoutmethod () {
+    this.auth.logout();
   }
+
+  showLogoutMethod () {
+  var token = localStorage.getItem('tokenfordetails');
+  var showLogoutButton;
+    if (!token) {
+      showLogoutButton = false;
+    } else {
+      showLogoutButton = true ;
+    }
+    console.log(showLogoutButton);
+    return showLogoutButton;
+  }
+
 }
 

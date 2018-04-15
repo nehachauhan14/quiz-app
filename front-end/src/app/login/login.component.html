@@ -19,12 +19,9 @@
               <mat-error *ngIf="email.touched && email.invalid"> 
                <mat-error *ngIf="email.errors.required">Email-id is required</mat-error>
                <mat-error *ngIf="email.errors.onlycygrpallowed">Invalid email id</mat-error>
-               
              </mat-error>   
            </mat-form-field>
          </div>
-
-         
          <div class="edit-container">
           <mat-form-field>
             <input 
@@ -42,14 +39,10 @@
       --></mat-error>
     </mat-form-field>
   </div>
-  
-  
   <div class="button-row">
-    <button mat-raised-button type="submit" (click)="submit(loginForm)" color="primary">Login</button>
+    <button mat-raised-button type="submit" (click)="submit(loginForm)" class="btn-orng">Login</button>
   </div>
    </mat-card-content>
-
-
 </form>
 </mat-card>
 </div>

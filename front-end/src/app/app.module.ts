@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 // services
@@ -20,20 +18,20 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {SampleComponent} from './sample/sample.component';
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
 import { CategorySelectComponent } from './category-select/category-select.component';
+import {FormsModule , ReactiveFormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeamListComponent } from './team-list/team-list.component';
-import { PostComponent } from './post/post.component';
 import {QuizSelectComponent} from './quiz-select/quiz-select.component';
 import { AddNewCategoryDialogComponent } from './add-new-category-dialog/add-new-category-dialog.component';
 import { AddNewTeamDialogComponent, DIALOG_DATA } from './add-new-team-dialog/add-new-team-dialog.component';
+
 
 // Material Imports
 import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRadioModule,
   MatCardModule, MatExpansionModule, MatIconModule, MatFormFieldModule,
   MatInputModule, MatDatepickerModule, MatNativeDateModule, MatChipsModule , MatDialogModule} from '@angular/material';
-
-
-@NgModule({
-  declarations: [
+  @NgModule({
+    declarations: [
     AppComponent,
     NavBarComponent,
     RegisterComponent,
@@ -46,7 +44,6 @@ import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRa
     QuizComponent,
     LoginComponent,
     CategorySelectComponent,
-    PostComponent,
     TeamListComponent,
     AddNewTeamDialogComponent,
     AddNewCategoryDialogComponent
@@ -75,10 +72,11 @@ import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRa
     MatNativeDateModule,
     HttpModule,
     RouterModule.forRoot([
-      {
-        path: '',
-        component: RegisterComponent
-      }, {
+    {
+      path: '',
+      component: RegisterComponent
+    },
+    {
       path: 'managequiz',
       component : ManageQuizComponent
     }, {
@@ -108,23 +106,20 @@ import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRa
       component: TeamListComponent
     },
     {
-      path: 'post',
-      component: PostComponent
-    },
-    {
-        path: '**',
-        component: NotFoundComponent
-    }])
-  ],
-providers: [
+     path: '**',
+      component: NotFoundComponent
+    }
+    ]),
+       ],
+    providers: [
     HttpWrapperService,
     AuthService
-  ],
-  bootstrap: [AppComponent],
-  entryComponents: [ AddNewTeamDialogComponent, AddNewCategoryDialogComponent ],
-})
+    ],
+    entryComponents: [AddNewTeamDialogComponent,AddNewCategoryDialogComponent],
+    bootstrap: [AppComponent]
+  })
 
-export class AppModule {
-constructor() {
-}
-}
+  export class AppModule {
+    constructor() {
+    }
+  }

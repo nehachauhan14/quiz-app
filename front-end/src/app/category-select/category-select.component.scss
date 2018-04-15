@@ -1,5 +1,5 @@
 .grad1 {
-   
+   position: relative;
     float: left;
     width: 60px;
     height: 60px; 
@@ -12,12 +12,20 @@
     padding-left: 12px;
     
 }
+.icon{
+   padding: 5px;
+   opacity: 0;
+
+}
 .filter {
     margin-top: 10px;
     margin-bottom: 20px;
 }  
 .example-card:hover{
     box-shadow: 2px 2px 2px 2px rgba(50, 50, 50, 0.1);
+}
+.example-card:hover .icon{
+    opacity: 1;
 }
 .fabbtn{
     position: fixed;
@@ -35,4 +43,25 @@
 .mat-card{
     display:flex;
     padding: 0px;
+}
+.mat-card-title{
+    top: 20px;
+    margin-bottom: 0%;
+    display: inherit;
+}
+.cardicon{
+    width: 30px;
+    height: 60px;     
+    display: inline-block;
+    position: absolute;
+    right: 2px;
+    top: 18px;
+}
+.cardicon2{
+    width: 30px;
+    height: 60px;     
+    display: inline-block;
+    position: absolute;
+    right:30px;
+    top:18px;
 }

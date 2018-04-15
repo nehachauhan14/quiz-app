@@ -1,7 +1,5 @@
-var ResoureController = require("./../ResourceController");
-var Question = require("./../../models/question");
-var jwt = require("jwt-simple");
-var config = require("../../../config/config.js");
+const ResoureController = require("./../ResourceController");
+const Question = require("./../../models/question");
 
 class QuestionController extends ResoureController {
   constructor(...args) {
@@ -12,18 +10,24 @@ class QuestionController extends ResoureController {
   }
 }
 
-var ques = new QuestionController(Question);
+let ques = new QuestionController(Question);
 
 let question = {
-  "create": (req, res, next) => { // USE DUMMY_QUESTIONS.JS INSTEAD
+  "create": (req, res, next) => {
     ques
-      .create({})
+      .create((function (req, res) {
+        return req.body;
+      }(req, res)))
       .then((result) => {
-        res.send(result);
+        res
+          .status(200)
+          .json({ "status": "SUCCESS" });
       })
       .catch((e) => {
-        res.send(e);
-      })
+        res
+          .status(404)
+          .json({ "status": "BAD REQUEST" });
+      });
   },
 
   // Method to GET list of all questions
@@ -32,11 +36,19 @@ let question = {
       .index()
       .then((result) => {
         createProps(result);
-        res.send(result);
+        res
+          .status(200)
+          .json({
+            "status": "SUCCESS",
+            "total": result.length,
+            "result": result
+          });
         next();
       })
       .catch((e) => {
-        res.send(e);
+        res
+          .status(404)
+          .json({ "status": "BAD REQUEST" });
       })
 
     function createProps(result) {
@@ -51,16 +63,21 @@ let question = {
   "randomQuestion": (req, res, next) => {
     function generateRandomQuestion(req, res, next) {
       var random = generateRandomNumberRecursive(this.random, this.random.length);
-      // console.log(this.random);
       this.listAllQuestions[random].isAsked = true;
-      res.send(this.listAllQuestions[random]);
+      res
+        .status(200)
+        .json({
+          "status": "SUCCESS",
+          "random_number": random,
+          "random_question": this.listAllQuestions[random]
+        });
       next();
     };
 
     function generateRandomNumberRecursive(random, length) {
       var num = Math.floor(Math.random() * this.totalQuestions);
       // if length is 0 then, return 0
-      if (length == 0) { // <- terminating condition
+      if (length === 0) { // <- terminating condition
         return 0;
       }
       if (random.includes(num) === true) {
@@ -74,16 +91,22 @@ let question = {
     generateRandomQuestion(req, res, next);
   },
 
-  // Method to GET list of generated questions
+  // Method to GET list of all generated/asked questions
   "generatedQuestions": (req, res, next) => {
     function generatedQuestions(req, res, next) {
       var result = [];
       this.listAllQuestions.forEach((ele) => {
-        if (ele.isAsked == true) {
+        if (ele.isAsked === true) {
           result.push(ele);
         }
       });
-      res.send(result);
+      res
+        .status(200)
+        .json({
+          "status": "SUCCESS",
+          "total": result.length,
+          "collection": result
+        });
     };
 
     generatedQuestions(req, res, next);
@@ -94,10 +117,22 @@ let question = {
     function foo(req, res, next) {
       if (this.idx < this.totalQuestions) {
         this.listAllQuestions[this.idx].isAsked = true;
-        res.send(this.listAllQuestions[this.idx]);
+        res
+          .status(200)
+          .json({
+            "status": "SUCCESS",
+            "question_number": this.idx,
+            "question": this.listAllQuestions[this.idx]
+          });
         this.idx++;
       }
-      res.send(this.listAllQuestions[this.idx - 1]);
+      res
+        .status(200)
+        .json({
+          "status": "SUCCESS",
+          "question_number": (this.idx - 1),
+          "question": this.listAllQuestions[this.idx - 1]
+        });
     };
 
     foo(req, res, next);

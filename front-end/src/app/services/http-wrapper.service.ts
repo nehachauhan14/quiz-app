@@ -23,7 +23,7 @@ export class HttpWrapperService {
   /**
    * Base url used in all requests.
    */
-  protected baseUrl = '';
+  public baseUrl = 'http://vishalranjan.in:1830/quizapp';
 
   /**
    * Response interceptors which are fired on every response

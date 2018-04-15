@@ -1,4 +1,4 @@
 <p>
   manage quiz works!
 </p>
-<button mat-raised-button type="submit" (click)="logoutmethod()" color="primary">Logout</button>
+<p *ngIf="showLogoutMethod()"><button mat-raised-button type="submit" (click)="logoutmethod()" class="btn-orng">Logout</button></p>

@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormArray, For
 @Component({
   selector: 'app-add-questions',
   templateUrl: './add-questions.component.html',
-  styleUrls: ['./add-questions.component.css']
+  styleUrls: ['./add-questions.component.scss']
 })
 export class AddQuestionsComponent implements OnInit {
   addQuesForm: FormGroup;
@@ -118,7 +118,7 @@ export class AddQuestionsComponent implements OnInit {
       options: this._formBuilder.group({
         optionOne: this._formBuilder.group({
           option: ['',  Validators.required],
-          isAnswer: ['', ],
+          isAnswer: [ false ],
           isImage: ['', ]
         }),
         optionTwo: this._formBuilder.group({

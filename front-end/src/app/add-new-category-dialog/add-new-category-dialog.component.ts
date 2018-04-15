@@ -2,7 +2,6 @@ import { Component, OnInit, EventEmitter, Inject, Optional , Output } from '@ang
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { HttpWrapperService } from '../services/http-wrapper.service';
-import { AppSettings } from '../models/appSettings';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
@@ -12,8 +11,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class AddNewCategoryDialogComponent implements OnInit {
 
-  settings = new AppSettings();
-  adminUrl = this.settings.base + 'quizapp/api/category';
+  baseUrl = this._http.baseUrl + '/api/category';
   header: Headers = new Headers();
   categoryFormGroup: FormGroup;
   isChecked = false;
@@ -57,7 +55,7 @@ export class AddNewCategoryDialogComponent implements OnInit {
         'categoryName': this.categoryName,
         'isTechnology': this.isTechnology
       };
-      this._http.post(this.adminUrl, data, options).subscribe((response) => {
+      this._http.post(this.baseUrl, data, options).subscribe((response) => {
         this._dialogRef.close();
         console.log(response);
       });
@@ -71,11 +69,12 @@ export class AddNewCategoryDialogComponent implements OnInit {
         'categoryName': this.categoryName,
         'isTechnology': this.isTechnology
       };
-      this._http.put(this.adminUrl + '/' + id , data , options)
+      this._http.put(this.baseUrl + '/' + id , data , options)
       .subscribe(response => {
         // this.onEdit.emit(true);
         this._dialogRef.close();
         console.log(response);
       });
     }
+
   }
