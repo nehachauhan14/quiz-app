@@ -1,10 +1,23 @@
+.grad1 {
+   
+    float: left;
+    width: 60px;
+    height: 60px; 
+    color: white;
+    opacity: 0.95;
+}
+.text {
+    color: white;
+    font-size: 45px;
+    padding-left: 12px;
+    
+}
 .filter {
     margin-top: 10px;
     margin-bottom: 20px;
-}
-
-  .example-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}  
+.example-card:hover{
+    box-shadow: 2px 2px 2px 2px rgba(50, 50, 50, 0.1);
 }
 .fabbtn{
     position: fixed;
@@ -12,3 +25,14 @@
     right: 30px; 
 }
 
+.headerimage{
+   
+    float: left;
+    width: 60px;
+    height: 60px; 
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+.mat-card{
+    display:flex;
+    padding: 0px;
+}
