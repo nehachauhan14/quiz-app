@@ -87,7 +87,7 @@ export class CategorySelectComponent implements OnInit {
           console.log(response);
           this.categorylist = response;
         });
-        this._snackBar.open('Deleted Category', 'dismiss' , {
+        this._snackBar.open('Deleted Category', '' , {
           duration: 2000
         });
       });
