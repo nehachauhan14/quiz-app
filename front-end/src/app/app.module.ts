@@ -29,7 +29,8 @@ import { AddNewTeamDialogComponent, DIALOG_DATA } from './add-new-team-dialog/ad
 // Material Imports
 import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRadioModule,
   MatCardModule, MatExpansionModule, MatIconModule, MatFormFieldModule,
-  MatInputModule, MatDatepickerModule, MatNativeDateModule, MatChipsModule , MatDialogModule} from '@angular/material';
+  MatInputModule, MatDatepickerModule, MatNativeDateModule, MatChipsModule , MatDialogModule, MatSnackBarModule} from '@angular/material';
+
   @NgModule({
     declarations: [
     AppComponent,
@@ -70,6 +71,7 @@ import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRa
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     HttpModule,
     RouterModule.forRoot([
     {

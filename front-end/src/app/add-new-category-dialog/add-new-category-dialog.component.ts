@@ -71,7 +71,6 @@ export class AddNewCategoryDialogComponent implements OnInit {
       };
       this._http.put(this.baseUrl + '/' + id , data , options)
       .subscribe(response => {
-        // this.onEdit.emit(true);
         this._dialogRef.close();
         console.log(response);
       });
