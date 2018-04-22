@@ -44,7 +44,10 @@ apiRoutes = function (router) {
     router.get("/question/randomQuestion", api.question.randomQuestion);
     router.get("/question/generatedQuestions", api.question.generatedQuestions);
     router.get("/question/nextQuestion", api.question.nextQuestion);
- 
+
+    //Teams Controller
+    router.post("/team" ,api.team.create);
+
     return router;
 };
 

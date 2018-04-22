@@ -4,6 +4,7 @@ var analytics = require('./api/analytics')
 var user = require('./api/UserController')
 var quiz = require('./api/QuizController')
 var category = require('./api/CategoryController')
+var team = require('./api/TeamController')
 var clients = require('./admin/clients')
 var adminUsers = require('./admin/adminUsers')
 
@@ -20,6 +21,7 @@ module.exports = {
     quiz: quiz,
     category: category,
     question: question,
+    team:team,
 
   // Admin Endpoints
   "clients": clients,

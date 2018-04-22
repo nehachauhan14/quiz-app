@@ -42,6 +42,8 @@ export class AuthService  {
         console.log('logged out successfully!');
         this._router.navigate(['/login']);
     }
+x-auth    
+
     isLoggedIn() {
         return tokenNotExpired();
     }
