@@ -24,12 +24,14 @@ import { TeamListComponent } from './team-list/team-list.component';
 import {QuizSelectComponent} from './quiz-select/quiz-select.component';
 import { AddNewCategoryDialogComponent } from './add-new-category-dialog/add-new-category-dialog.component';
 import { AddNewTeamDialogComponent, DIALOG_DATA } from './add-new-team-dialog/add-new-team-dialog.component';
+import { RoundsComponent } from './rounds/rounds.component';
+import { AddNewRoundDialogComponent } from './add-new-round-dialog/add-new-round-dialog.component';
 
 
 // Material Imports
 import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRadioModule,
   MatCardModule, MatExpansionModule, MatIconModule, MatFormFieldModule,
-  MatInputModule, MatDatepickerModule, MatNativeDateModule, MatChipsModule , MatDialogModule, MatSnackBarModule} from '@angular/material';
+  MatInputModule, MatDatepickerModule, MatNativeDateModule, MatChipsModule , MatDialogModule, MatSnackBarModule } from '@angular/material';
 
   @NgModule({
     declarations: [
@@ -47,7 +49,9 @@ import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRa
     CategorySelectComponent,
     TeamListComponent,
     AddNewTeamDialogComponent,
-    AddNewCategoryDialogComponent
+    AddNewCategoryDialogComponent,
+    RoundsComponent,
+    AddNewRoundDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -106,8 +110,10 @@ import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRa
     {
       path: 'team',
       component: TeamListComponent
-    },
-    {
+    }, {
+      path: 'rounds',
+      component: RoundsComponent
+    }, {
      path: '**',
       component: NotFoundComponent
     }
@@ -117,7 +123,11 @@ import {MatSelectModule, MatFormField, MatButtonModule, MatCheckboxModule, MatRa
     HttpWrapperService,
     AuthService
     ],
-    entryComponents: [AddNewTeamDialogComponent,AddNewCategoryDialogComponent],
+    entryComponents: [ AddNewTeamDialogComponent,
+      AddNewCategoryDialogComponent,
+      AddNewTeamDialogComponent,
+      AddNewRoundDialogComponent],
+
     bootstrap: [AppComponent]
   })
 

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AddNewTeamDialogComponent } from '../add-new-team-dialog/add-new-team-dialog.component';
 import { HttpWrapperService } from '../services/http-wrapper.service';
 import { NgStyle } from '@angular/common';
 import { MatDialog, MatDialogRef, MatDialogConfig, MatSnackBar } from '@angular/material';
@@ -53,6 +52,7 @@ export class CategorySelectComponent implements OnInit {
           this.Category = response;
           this.dialogRef = this._dialog.open(AddNewCategoryDialogComponent, {
             width : '500px' ,
+            height : 'auto',
             hasBackdrop : false,
             data : this.Category
           });
@@ -99,7 +99,11 @@ export class CategorySelectComponent implements OnInit {
 
     gradColor() {
       this.isGradColorCalled = true;
-      const color = [ 'linear-gradient(120deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)',
+      const color = [
+      'linear-gradient(120deg, #FF82A9 0%, #FFA4C0 51%, #FFBAD0 75%)',
+      'linear-gradient(120deg, #56CBF9 0%, #A2E2FB 51%, #B2E7FC 75%)',
+      'linear-gradient(120deg, #6DD1A3 0%, #79E8B5 51%, #85FFC7 75%)',
+      'linear-gradient(120deg, #ff9a9e 0%, #ff99cc 51%, #fecfef 90%)',
       'linear-gradient(120deg, #E6FF89 0%, #D2FF28 51%, #DEFF62 75%)',
       'linear-gradient(120deg, #9900FF 0%, #9933FF 51%, #9966FF 75%)',
       'linear-gradient(120deg, #FF9900 0%, #FFCC00 51%, #FFFF00 75%)',
@@ -110,7 +114,7 @@ export class CategorySelectComponent implements OnInit {
       'linear-gradient(120deg, #56CBF9 0%, #A2E2FB 51%, #B2E7FC 75%)',
       'linear-gradient(120deg, #E4BE9E 0%, #E6C3A6 51%, #EDD5C1 75%)'];
       for (let i = 0; i < this.categorylist.length; i++) {
-        if (this.gradientCounter === 10) {
+        if (this.gradientCounter === 3) {
           this.gradientCounter = 0;
         }
         this.rand[i] = color[this.gradientCounter];

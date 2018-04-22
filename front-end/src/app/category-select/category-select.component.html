@@ -1,19 +1,27 @@
 <div>
-<br/>
-<br/>
- <div class=row>
-  <div class=" filter col-sm-4" *ngFor="let category of categorylist; let i=index">
-    <mat-card class="example-card">
-      <div class="grad1" [ngStyle]="bgChange(i)"><span class="text">{{category.categoryName[0]}}</span></div>
-      <div>
-          <mat-card-title>&nbsp;          
-            {{ category.categoryName }}           
-          </mat-card-title>          
-      </div>  
-      <div class="cardicon2"><span class="icon"><mat-icon (click)="addNewCategory(category._id)">edit</mat-icon></span></div>
-      <div class="cardicon"><span class="icon"><mat-icon (click)="deletecategory(category._id)">delete</mat-icon></span></div>
-    </mat-card>
+  <div class=row>
+    <div class=" filter col-sm-4" *ngFor="let category of categorylist; let i=index">
+      <mat-card class="card">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="grad1 padding-grad" [ngStyle]="bgChange(i)"><span class=" padding-grad text">{{category.categoryName[0]}}</span></div>
+          </div>
+          <div class="padding col-sm-6">
+            <div>
+              <mat-card-title>&nbsp;          
+                {{ category.categoryName }}           
+              </mat-card-title>          
+            </div> 
+          </div>
+          <div class="col-sm-2">  
+            <div class="cardicon2"><span class="icon"><mat-icon (click)="addNewCategory(category._id)">edit</mat-icon></span></div>
+          </div>
+          <div class="col-sm-2">  
+            <div class="cardicon"><span class="icon"><mat-icon (click)="deletecategory(category._id)">delete</mat-icon></span></div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
   </div>
-</div>
 </div>
 <button mat-fab class="fabbtn" title="Add New Categories" (click)="addNewCategory()"><mat-icon>add</mat-icon></button>

@@ -59,17 +59,18 @@ h5{
     background-color: $hover-link-color;
 }
 .navbar {
-    background-color: rgba($base-body-color,0.75);
+    background-color: rgba($base-navbar-color,0.75);
     font-family: $header-font-family;
     box-shadow:  0 8px 6px -6px #999;
     margin-left: -10px;
     margin-right: -10px;
 }
 .nav-link{
-    color: $accent-color;
+    color: $base-white-color;
+    font-weight: 100;
 }
 .nav-link:hover{
-    color: $hover-link-color;
+    color: $divider-gray;
 }
 mat-card-title{
     color: $accent-color;
@@ -97,13 +98,13 @@ a.buttonWhite.buttonWhite:hover {
     color: $white;
 }
 a {
-    color: $base-link-color;
+    color: $base-white-color;
     cursor: pointer;
     text-decoration: none;
     }
 a:hover {
     text-decoration: none;
-    color: $hover-link-color
+    color: $base-white-color;
 }
 .mat-card {
     color: $base-font-color;

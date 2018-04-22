@@ -43,12 +43,17 @@ $red: #E61E2E;
 $orange:  #FF9800;
 $cyan: #00BCD4;
 $black: #000;
-
+$blue : #0079FF
+;
 $primary-color: $blue;
 $accent-color: $orange;
 
 // Body Color
 $base-body-color: $light-gray;
+
+//Navbar Color
+$base-navbar-color: $blue;
+
 
 // Background Color
 $base-background-color: white;
@@ -56,6 +61,7 @@ $base-background-color: white;
 // Font Colors
 $base-font-color: $dark-gray;
 $base-accent-color: $orange;
+$base-white-color : $white;
 
 // Text Link Colors
 $base-link-color: $base-accent-color;
