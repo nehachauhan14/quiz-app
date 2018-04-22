@@ -41,22 +41,23 @@ export class RoundsComponent implements OnInit {
         this.getRoundById(id).subscribe(response => {
           this.round = response;
           this.dialogRef = this._dialog.open(AddNewRoundDialogComponent, {
-            width: '250px',
+            width: '800px',
             height : 'auto',
             hasBackdrop : false,
             data : this.round
           });
-          this.dialogRef.afterClosed().subscribe( data => {
-            console.log('Edit Dialog closed');
+        this.dialogRef.afterClosed().subscribe( data => {
+          console.log('Edit Dialog closed');
             this._http.get(this.baseUrl + '/api/round').subscribe(response => {
-              console.log(response);
-              this.roundlist = response;
+            console.log(response);
+            this.roundlist = response;
             });
           });
         });
       } else {
         this.dialogRef = this._dialog.open(AddNewRoundDialogComponent, {
-          width : '500px' ,
+          width : '750px' ,
+          height : '500px' ,
           hasBackdrop : false,
           data : ''
         });
@@ -90,10 +91,10 @@ export class RoundsComponent implements OnInit {
     gradColor() {
       this.isGradColorCalled = true;
       const color = [
-        'linear-gradient(120deg, #FF82A9 0%, #FFA4C0 51%, #FFBAD0 75%)',
-        'linear-gradient(120deg, #56CBF9 0%, #A2E2FB 51%, #B2E7FC 75%)',
-        'linear-gradient(120deg, #6DD1A3 0%, #79E8B5 51%, #85FFC7 75%)',
-        'linear-gradient(120deg, #ff9a9e 0%, #ff99cc 51%, #fecfef 90%)',
+      'linear-gradient(120deg, #FF82A9 0%, #FFA4C0 51%, #FFBAD0 75%)',
+      'linear-gradient(120deg, #56CBF9 0%, #A2E2FB 51%, #B2E7FC 75%)',
+      'linear-gradient(120deg, #6DD1A3 0%, #79E8B5 51%, #85FFC7 75%)',
+      'linear-gradient(120deg, #ff9a9e 0%, #ff99cc 51%, #fecfef 90%)',
       'linear-gradient(120deg, #E6FF89 0%, #D2FF28 51%, #DEFF62 75%)',
       'linear-gradient(120deg, #9900FF 0%, #9933FF 51%, #9966FF 75%)',
       'linear-gradient(120deg, #FF9900 0%, #FFCC00 51%, #FFFF00 75%)',

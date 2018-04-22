@@ -16,9 +16,9 @@ export class AddNewRoundDialogComponent implements OnInit {
     private _dialogRef: MatDialogRef<AddNewRoundDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any  ) { }
 
-    categoryForRound: Array<any> = [];
+    categoryForRound = [];
     newCategory: any = {};
-    categoryFinal: Array<any> = [];
+    categoryFinal: FormArray;
   categoryList = [{
     _id: 1 ,
     name: 'Angular'
@@ -30,33 +30,25 @@ export class AddNewRoundDialogComponent implements OnInit {
     name: 'Vocab'
   }];
 
-  pushCategory() {
-    this.newCategory = this.roundForm.controls.categoryFinal.value[0].category ;
-    console.log(this.newCategory);
-    // Control.push(this.initCategory());
-    }
-
-
   ngOnInit() {
     this.roundForm = this._fB.group({
       roundName : ['' , [Validators.required]],
       categoryFinal : this._fB.array([
         this.initCategory()
       ])
-    });
-
+  });
   }
   initCategory() {
     return this._fB.group({
       category: ['', Validators.required],
-      numberOfQuestion : [5, [Validators.required]],
-      point: [ 5, [Validators.required,
+      numberOfQuestion : [, [Validators.required]],
+      point: [, [Validators.required,
                 Validators.max(15)]],
       });
   }
 
   submit(roundForm) {
-    console.log(roundForm);
+    console.log(roundForm.value);
   }
 
 
@@ -64,12 +56,30 @@ export class AddNewRoundDialogComponent implements OnInit {
     return roundForm.get('categoryFinal').controls;
   }
 
+  getCategory(roundForm) {
+   const val = roundForm.get('categoryFinal').value;
+    if (val[0].category === '' || val[0].numberOfQuestion == null || val[0].point == null ) {
+      return;
+    }
+    return roundForm.get('categoryFinal').value;
+  }
+
   removeAddress(i: number) {
     const control = <FormArray>this.roundForm.controls['categoryFinal'];
     control.removeAt(i);
   }
-  addCategory() {
-    const control = <FormArray>this.roundForm.controls['categoryFinal'] ;
-    control.push(this.initCategory());
+  addCategory(cat: any, number: any , pnt: any) {
+    this.categoryFinal = <FormArray>this.roundForm.get('categoryFinal');
+    this.newCategory = this._fB.group({
+      category: this.roundForm.get('categoryFinal').value[0].category,
+      numberOfQuestion: this.roundForm.get('categoryFinal').value[0].numberOfQuestion,
+      point: this.roundForm.get('categoryFinal').value[0].point
+    });
+    this.categoryFinal.push(this.newCategory);
+    // cat.value = '';
+    // number.value = '';
+    // pnt.value = '';
   }
+
+
 }

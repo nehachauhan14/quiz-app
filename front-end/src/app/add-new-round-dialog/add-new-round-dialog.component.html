@@ -1,54 +1,34 @@
 <div [formGroup]="roundForm">
   <h2 mat-dialog-title>Add New Round</h2> 
-  <mat-dialog-content>
+  <mat-dialog-content style="height:400px">
     <mat-form-field>
       <input matInput formControlName="roundName" placeholder="Enter Round name">
-    </mat-form-field>   
-    <!-- <div formArrayName="categoryFinal">
-      <mat-form-field>
-        <mat-select placeholder="Select Category" formControlName="category">
-          <mat-option *ngFor="let category of categoryList" [value]="category.name">
-            {{ category.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="number" placeholder="Count" formControlName="numberOfQuestion" min="1" >
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="number" placeholder="Points" formControlName="point" min="1" >
-      </mat-form-field>
-    </div>
-    <button mat-button color="accent" (click)="pushCategory()">Add</button> -->
-    
+    </mat-form-field>       
     <div class="row" formArrayName="categoryFinal">
-      <div class="col-md-12" *ngFor="let address of getAddresses(roundForm) ; let i = index">
+      <div class="col-md-12" >
         <div class="row">
           <div class="col-md-11">
-            <span>Address  {{i+1}} </span>
-          </div>
-          <div class="col-md-1">
-            <span *ngIf="getAddresses(roundForm).length > 1" (click)="removeAddress(i)" class="glyphicon glyphicon-remove"></span>
+            <span>Add Category </span>
           </div>
         </div>
-        <div [formGroupName]="i" class="row">
-          <div class="col-md-6">
+        <div [formGroupName]="0" class="row">
+          <div class="col-md-3">
             <mat-input-container>
-              <mat-select placeholder="Select Category" formControlName="category">
+              <mat-select #Cat placeholder="Select Category" formControlName="category">
                 <mat-option *ngFor="let category of categoryList" [value]="category.name">
                   {{ category.name }}
                 </mat-option>
               </mat-select>
             </mat-input-container>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-3">
             <mat-input-container>
-              <input matInput type="number" formControlName="numberOfQuestion" placeholder="Number of Question">
+              <input matInput #num type="number" formControlName="numberOfQuestion" placeholder="Number of Question">
             </mat-input-container>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-3">
             <mat-input-container>
-              <input matInput type="number" formControlName="point" placeholder="point">
+              <input matInput #pnt type="number" formControlName="point" placeholder="point">
             </mat-input-container>
           </div>
         </div>
@@ -56,16 +36,35 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <a (click)="addCategory()" class="point">
-          <strong> another address + </strong>
+        <a (click)="addCategory(Cat, num, pnt)" class="point">
+          <strong> add more + </strong>
         </a>
       </div>
+    </div>
+    <div class="row">
+        <table class="table-bordered table table-striped">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Number of Question</th>
+                <th>Point</th>
+                <th> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let a of getCategory(roundForm); let i = index">
+                  <td>{{a.category}}</td>
+                  <td>{{a.numberOfQuestion}}</td>
+                  <td>{{a.point}}</td>
+                  <td><span *ngIf="getAddresses(roundForm).length > 1" (click)="removeAddress(i)" class="glyphicon glyphicon-remove">X</span></td>
+              </tr>
+            </tbody>
+          </table>
     </div>
     
     <mat-dialog-actions>
       <button  mat-raised-button class="btn-orng" type="button" (click) ="submit(roundForm)" [disabled]="!roundForm.valid" mat-dialog-close >Add</button>
       <button  mat-raised-button class="btn-orng" type="button" mat-dialog-close>Cancel</button>
-    </mat-dialog-actions>
-    <pre> {{roundForm.value | json}} </pre>           
+    </mat-dialog-actions> 
   </mat-dialog-content>
 </div>
