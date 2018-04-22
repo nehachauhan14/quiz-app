@@ -31,7 +31,6 @@ export class AddNewRoundDialogComponent implements OnInit {
   }];
 
   pushCategory() {
-    debugger;
     this.newCategory = this.roundForm.controls.categoryFinal.value[0].category ;
     console.log(this.newCategory);
     // Control.push(this.initCategory());
@@ -54,5 +53,23 @@ export class AddNewRoundDialogComponent implements OnInit {
       point: [ 5, [Validators.required,
                 Validators.max(15)]],
       });
+  }
+
+  submit(roundForm) {
+    console.log(roundForm);
+  }
+
+
+  getAddresses(roundForm) {
+    return roundForm.get('categoryFinal').controls;
+  }
+
+  removeAddress(i: number) {
+    const control = <FormArray>this.roundForm.controls['categoryFinal'];
+    control.removeAt(i);
+  }
+  addCategory() {
+    const control = <FormArray>this.roundForm.controls['categoryFinal'] ;
+    control.push(this.initCategory());
   }
 }

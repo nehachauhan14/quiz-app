@@ -70,22 +70,22 @@ export class RoundsComponent implements OnInit {
     }
   }
 
-    deleteround(id) {
-      this._http.delete(this.baseUrl + '/api/round/' + id)
-      .subscribe(response => {
-        this._http.get(this.baseUrl + '/api/round').subscribe(response => {
-          console.log(response);
-          this.roundlist = response;
-        });
-        this._snackBar.open('Deleted Round', '' , {
-          duration: 2000
-        });
-      });
-    }
+    // deleteround(id) {
+    //   this._http.delete(this.baseUrl + '/api/round/' + id)
+    //   .subscribe(response => {
+    //     this._http.get(this.baseUrl + '/api/round').subscribe(response => {
+    //       console.log(response);
+    //       this.roundlist = response;
+    //     });
+    //     this._snackBar.open('Deleted Round', '' , {
+    //       duration: 2000
+    //     });
+    //   });
+    // }
 
-    getRoundById(id: string): Observable<Response> {
-      return this._http.get(this.baseUrl + '/api/round/' + id );
-    }
+    // getRoundById(id: string): Observable<Response> {
+    //   return this._http.get(this.baseUrl + '/api/round/' + id );
+    // }
 
     gradColor() {
       this.isGradColorCalled = true;
