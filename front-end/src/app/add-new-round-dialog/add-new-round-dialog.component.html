@@ -34,7 +34,11 @@
                   <div [formGroupName]="i" class="row">
                     <div class="col-md-6">
                       <mat-input-container>
-                        <input matInput type="text" formControlName="category" placeholder="Category Name">
+                              <mat-select placeholder="Select Category" formControlName="category">
+                                  <mat-option *ngFor="let category of categoryList" [value]="category.name">
+                                    {{ category.name }}
+                                  </mat-option>
+                                </mat-select>
                       </mat-input-container>
                     </div>
                     <div class="col-md-6">
