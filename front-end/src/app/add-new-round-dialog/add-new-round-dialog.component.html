@@ -3,18 +3,21 @@
   <mat-dialog-content style="height:400px">
     <mat-form-field>
       <input matInput formControlName="roundName" placeholder="Enter Round name">
-    </mat-form-field>       
-    <div class="row" formArrayName="categoryFinal">
+    </mat-form-field>    
+    <mat-form-field>
+        <input matInput formControlName="roundType" placeholder="Enter Round ">
+      </mat-form-field>   
+    <div class="row" >
       <div class="col-md-12" >
         <div class="row">
           <div class="col-md-11">
             <span>Add Category </span>
           </div>
         </div>
-        <div [formGroupName]="0" class="row">
+        <div class="row" >
           <div class="col-md-3">
             <mat-input-container>
-              <mat-select #Cat placeholder="Select Category" formControlName="category">
+              <mat-select #Cat placeholder="Select Category" >
                 <mat-option *ngFor="let category of categoryList" [value]="category.name">
                   {{ category.name }}
                 </mat-option>
@@ -23,12 +26,12 @@
           </div>
           <div class="col-md-3">
             <mat-input-container>
-              <input matInput #num type="number" formControlName="numberOfQuestion" placeholder="Number of Question">
+              <input matInput #num type="number"  placeholder="Number of Question">
             </mat-input-container>
           </div>
           <div class="col-md-3">
             <mat-input-container>
-              <input matInput #pnt type="number" formControlName="point" placeholder="point">
+              <input matInput #pnt type="number"  placeholder="point">
             </mat-input-container>
           </div>
         </div>
@@ -41,7 +44,7 @@
         </a>
       </div>
     </div>
-    <div class="row">
+    <div class="row" formArray="CategoryFinal">
         <table class="table-bordered table table-striped">
             <thead>
               <tr>
@@ -52,11 +55,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let a of getCategory(roundForm); let i = index">
+              <tr *ngFor="let a of getCategory(); let i = index">
                   <td>{{a.category}}</td>
                   <td>{{a.numberOfQuestion}}</td>
                   <td>{{a.point}}</td>
-                  <td><span *ngIf="getAddresses(roundForm).length > 1" (click)="removeAddress(i)" class="glyphicon glyphicon-remove">X</span></td>
+                  <td><span *ngIf="getCategory().length > 1" (click)="removeCategory(i)" class="glyphicon glyphicon-remove">X</span></td>
               </tr>
             </tbody>
           </table>
