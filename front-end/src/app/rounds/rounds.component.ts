@@ -29,17 +29,28 @@ export class RoundsComponent implements OnInit {
         _id : 1 ,
         roundName : 'Round1',
         roundType : 'buzzer',
+        category  : [{
+          categoryId : 1 ,
+          numberOfQuestion : 3,
+          points : 5
+        }]
       }, {
-        _id : 1 ,
-        roundName : 'Round1',
+        _id : 2 ,
+        roundName : 'Round2',
         roundType : 'buzzer',
+        category  : [{
+          categoryId : 1 ,
+          numberOfQuestion : 3,
+          points : 5
+        }]
       }];
     }
 
-    addNewRound(id?): void {
+    addEditRound(id? = 1): void {
       if (id) {
-        this.getRoundById(id).subscribe(response => {
-          this.round = response;
+        // this.getRoundById(id).subscribe(response => {
+          // this.round = response;
+          this.round = this.roundlist[0];
           this.dialogRef = this._dialog.open(AddNewRoundDialogComponent, {
             width: '800px',
             height : 'auto',
@@ -48,11 +59,11 @@ export class RoundsComponent implements OnInit {
           });
         this.dialogRef.afterClosed().subscribe( data => {
           console.log('Edit Dialog closed');
-            this._http.get(this.baseUrl + '/api/round').subscribe(response => {
-            console.log(response);
-            this.roundlist = response;
-            });
-          });
+            // this._http.get(this.baseUrl + '/api/round').subscribe(response => {
+            // console.log(response);
+            // this.roundlist = response;
+            // });
+          // });
         });
       } else {
         this.dialogRef = this._dialog.open(AddNewRoundDialogComponent, {

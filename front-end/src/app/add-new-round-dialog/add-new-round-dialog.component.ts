@@ -76,9 +76,9 @@ export class AddNewRoundDialogComponent implements OnInit {
       point: this.roundForm.get('categoryFinal').value[0].point
     });
     this.categoryFinal.push(this.newCategory);
-    // cat.value = '';
-    // number.value = '';
-    // pnt.value = '';
+    cat.value = '';
+    number.value = '';
+    pnt.value = '';
   }
 
 
