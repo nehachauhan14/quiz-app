@@ -46,7 +46,7 @@ export class RoundsComponent implements OnInit {
       }];
     }
 
-    addEditRound(id? = 1): void {
+    addEditRound(id = 1): void {
       if (id) {
         // this.getRoundById(id).subscribe(response => {
           // this.round = response;

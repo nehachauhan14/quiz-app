@@ -45,9 +45,9 @@
       </div>
     </div>
     <div class="row" formArray="CategoryFinal">
-        <table class="table-bordered table table-striped">
+        <table  class="table-bordered table table-striped">
             <thead>
-              <tr>
+              <tr *ngIf="getCategory().length > 1">
                 <th>Category</th>
                 <th>Number of Question</th>
                 <th>Point</th>
@@ -55,18 +55,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let a of getCategory(); let i = index">
+            <ng-container *ngFor="let a of getCategory(); let i = index" >
+              <tr *ngIf= "isNotNull(a)">
                   <td>{{a.category}}</td>
                   <td>{{a.numberOfQuestion}}</td>
                   <td>{{a.point}}</td>
                   <td><span *ngIf="getCategory().length > 1" (click)="removeCategory(i)" class="glyphicon glyphicon-remove">X</span></td>
               </tr>
+            </ng-container>
             </tbody>
           </table>
     </div>
     
     <mat-dialog-actions>
-      <button  mat-raised-button class="btn-orng" type="button" (click) ="submit(roundForm)" [disabled]="!roundForm.valid" mat-dialog-close >Add</button>
+      <button  mat-raised-button class="btn-orng" type="button" (click) ="submit(roundForm)" [disabled]="!roundForm.valid || getCategory().length <= 1" mat-dialog-close >Add</button>
       <button  mat-raised-button class="btn-orng" type="button" mat-dialog-close>Cancel</button>
     </mat-dialog-actions> 
   </mat-dialog-content>
