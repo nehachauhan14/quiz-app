@@ -17,6 +17,7 @@ export class AddNewRoundDialogComponent implements OnInit {
     private _dialogRef: MatDialogRef<AddNewRoundDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any  ) { }
 
+    title = 'Add New Round';
     newCategory: any ;
     categoryFinal: FormArray;
     categoryList = [{

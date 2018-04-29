@@ -52,7 +52,7 @@ export class RoundsComponent implements OnInit {
           // this.round = response;
           this.round = this.roundlist[0];
           this.dialogRef = this._dialog.open(AddNewRoundDialogComponent, {
-            width: '800px',
+            width: '700px',
             height : 'auto',
             hasBackdrop : false,
             data : this.round
@@ -68,7 +68,7 @@ export class RoundsComponent implements OnInit {
       } else {
         this.dialogRef = this._dialog.open(AddNewRoundDialogComponent, {
           width : '750px' ,
-          height : '500px' ,
+          height : 'auto' ,
           hasBackdrop : false,
           data : ''
         });
