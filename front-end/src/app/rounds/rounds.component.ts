@@ -9,6 +9,7 @@ import {AddNewRoundDialogComponent} from '../add-new-round-dialog/add-new-round-
   templateUrl: './rounds.component.html',
   styleUrls: ['./rounds.component.scss']
 })
+
 export class RoundsComponent implements OnInit {
 
   round: {};
@@ -47,10 +48,11 @@ export class RoundsComponent implements OnInit {
     }
 
     addEditRound(id = 1): void {
+      debugger;
       if (id) {
         // this.getRoundById(id).subscribe(response => {
           // this.round = response;
-          this.round = this.roundlist[0];
+          this.round = this.roundlist[id];
           this.dialogRef = this._dialog.open(AddNewRoundDialogComponent, {
             width: '700px',
             height : 'auto',

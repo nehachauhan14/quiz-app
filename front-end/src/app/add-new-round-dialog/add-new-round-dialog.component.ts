@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject , Optional } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm} from '@angular/forms';
 import { MatDialogRef , MAT_DIALOG_DATA } from '@angular/material';
 import { FormArray } from '@angular/forms/src/model';
@@ -13,11 +13,7 @@ import { CategorySelectComponent } from '../category-select/category-select.comp
 export class AddNewRoundDialogComponent implements OnInit {
 
   roundForm: FormGroup;
-  constructor(private _fB: FormBuilder ,
-    private _dialogRef: MatDialogRef<AddNewRoundDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: any  ) { }
-
-    title = 'Add New Round';
+  title = 'Add New Round';
     newCategory: any ;
     categoryFinal: FormArray;
     categoryList = [{
@@ -31,26 +27,27 @@ export class AddNewRoundDialogComponent implements OnInit {
       name: 'Vocab'
     }];
 
-    // this.roundForm.valid = (this.catrgoryFinal.lenght < 2) ? false 
+  constructor(private _fB: FormBuilder ,
+              private _dialogRef: MatDialogRef<AddNewRoundDialogComponent>,
+              @Optional() @Inject(MAT_DIALOG_DATA) private roundToEdit: any  ) { }
 
-    ngOnInit() {
-      // debugger;
-      this.roundForm = this._fB.group({
-        roundName : [, [Validators.required]],
-        roundType : [, [Validators.required]],
-        categoryFinal : this._fB.array([
-          this.initCategory()
-        ])
+  ngOnInit() {
+    debugger;
+    this.roundForm = this._fB.group({
+      roundName : [this.roundToEdit[0] ? this.roundToEdit[0].roundName : '', [Validators.required]],
+      roundType : [this.roundToEdit[0] ? this.roundToEdit[0].roundType : '', [Validators.required]],
+      categoryFinal : this._fB.array([
+      this.initCategory()])
       });
-    }
+  }
 
-    initCategory() {
-      return this._fB.group({
-        category: [, ] ,
-        numberOfQuestion : [, ],
-        point: [, [Validators.max(15)]],
-        });
-      }
+  initCategory() {
+    return this._fB.group({
+      category: [, ] ,
+      numberOfQuestion : [, ],
+      point: [, [Validators.max(15)]],
+      });
+  }
 
       submit(roundForm) {
         console.log(roundForm.value);

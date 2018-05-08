@@ -109,6 +109,9 @@ a:hover {
 .mat-card {
     color: $base-font-color;
 }
-/* .Align-form{
-    layout-align : center ; 
-} */
+
+.parentDisable{
+    z-index:998;   
+}
+#popup{
+z-index:999;}
