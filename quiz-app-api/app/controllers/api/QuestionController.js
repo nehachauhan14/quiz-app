@@ -1,23 +1,26 @@
+/*
+1    Aakash   10-04-2018
+*/
+
 const ResoureController = require("./../ResourceController");
-const Question = require("./../../models/question");
+const { Question } = require("./../../models");
 
 class QuestionController extends ResoureController {
   constructor(...args) {
-    super(...args);
-    this.listAllQuestions; // store list of all questions from DB
-    this.totalQuestions; // obtain total number of questions in the list
-    this.random;
+    super(args[0]);
+    this.listAllQuestions = args[1]; // store map of all questions from DB
+    this.totalQuestions = 0;         // obtain total number of questions in the list
+    this.randoms = [];
+    this.idx = 0;
   }
 }
 
-let ques = new QuestionController(Question);
+const ques = new QuestionController(Question, new Map());
 
-let question = {
+const question = {
   "create": (req, res, next) => {
     ques
-      .create((function (req, res) {
-        return req.body;
-      }(req, res)))
+      .create(req.body)
       .then((result) => {
         res
           .status(200)
@@ -26,43 +29,132 @@ let question = {
       .catch((e) => {
         res
           .status(404)
-          .json({ "status": "BAD REQUEST" });
+          .json({ "status": "Not Found" });
       });
   },
 
   // Method to GET list of all questions
-  "index": (req, res, next) => {
+  "read": (req, res, next) => {
+    var queryString = {
+      "page": Number.parseInt(req.query.page),
+      "limit": Number.parseInt(req.query.limit),
+      "perPage": Number.parseInt(req.query.perPage)
+    };
     ques
-      .index()
+      .index(queryString)
       .then((result) => {
-        createProps(result);
+        if (result.response.length === 0) {
+          res
+            .status(200)
+            .json({
+              "status": "SUCCESS",
+              "message": result.message
+            });
+        }
         res
           .status(200)
           .json({
             "status": "SUCCESS",
-            "total": result.length,
-            "result": result
+            "total": result.response.length,
+            "page": result.page,
+            "perPage": result.perPage,
+            "limit": result.limit,
+            "result": mapQuestions(result)
           });
         next();
       })
       .catch((e) => {
         res
           .status(404)
-          .json({ "status": "BAD REQUEST" });
-      })
+          .json({ "status": "Not Found", "Text": e });
+      });
 
-    function createProps(result) {
-      this.listAllQuestions = result;
-      this.totalQuestions = listAllQuestions.length;
-      this.random = new Array(totalQuestions);
-      this.idx = 0;
+    const mapQuestions = (result) => {
+      // console.log(ques.listAllQuestions.keys());
+      if (ques.listAllQuestions.has(queryString.page)) {
+        // console.log("In If-Check block!");
+        return ques.listAllQuestions.get(queryString.page);
+      } else {
+        // console.log("In Else-Check block!");
+        ques.listAllQuestions.set(queryString.page, result.response);
+        ques.listAllQuestions.get(queryString.page).forEach((ele) => {
+          ele.isAsked = true;
+        });
+        return ques.listAllQuestions.get(queryString.page);
+      }
     }
+  },
+
+  "update": (req, res, next) => {
+    ques
+      .update(req.body)
+      .then((result) => {
+        res
+          .status(200)
+          .json({
+            "status": "SUCCESS",
+            "result": result
+          });
+      })
+      .catch((e) => {
+        res
+          .status(404)
+          .json({ "status": "Not Found", "Text": e });
+      });
+  },
+
+  "delete": (req, res, next) => {
+    console.log(req.body.id);
+    ques
+      .delete(req.body.id)
+      .then((result) => {
+        res
+          .status(200)
+          .json({
+            "status": "SUCCESS"
+          });
+      })
+      .catch((e) => {
+        res
+          .status(404)
+          .json({ "status": "Not Found", "Text": e });
+      });
+  },
+
+  // Method to GET list of all generated/asked questions
+  "generatedQuestions": (req, res, next) => {
+    let listOfGeneratedQuestions = () => {
+      var _result = [];
+      if (_result.includes(req.query.page) === false) {
+        for (const [key, value] of ques.listAllQuestions) {
+          _result.push({ key, value });
+        }
+        return _result;
+      }
+      return _result;
+    }
+
+    let result = listOfGeneratedQuestions();
+
+    /* example
+    for(let i = 0; i < result.length; i++) {
+      result[i].value.forEach((ele) => {console.log(ele)})
+      console.log(result[i].key);
+    } */
+
+    res
+      .status(200)
+      .json({
+        "status": "SUCCESS",
+        "total": result.length,
+        "collection": result
+      });
   },
 
   // Method to GET a random question
   "randomQuestion": (req, res, next) => {
     function generateRandomQuestion(req, res, next) {
-      var random = generateRandomNumberRecursive(this.random, this.random.length);
+      var random = generateRandomNumberRecursive(this.randoms, this.randoms.length);
       this.listAllQuestions[random].isAsked = true;
       res
         .status(200)
@@ -89,27 +181,6 @@ let question = {
     }
 
     generateRandomQuestion(req, res, next);
-  },
-
-  // Method to GET list of all generated/asked questions
-  "generatedQuestions": (req, res, next) => {
-    function generatedQuestions(req, res, next) {
-      var result = [];
-      this.listAllQuestions.forEach((ele) => {
-        if (ele.isAsked === true) {
-          result.push(ele);
-        }
-      });
-      res
-        .status(200)
-        .json({
-          "status": "SUCCESS",
-          "total": result.length,
-          "collection": result
-        });
-    };
-
-    generatedQuestions(req, res, next);
   },
 
   // send (next) question

@@ -1,5 +1,5 @@
 const ResourceController = require("../ResourceController");
-const Category = require('../../models/category')
+const { Category } = require('../../models')
 
 class CategoryController extends ResourceController {
     constructor(...args) {

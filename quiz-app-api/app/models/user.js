@@ -23,10 +23,10 @@ var user = db.Schema({
         type: String
     },   
     userRole: {
-        type: String
-        //required: true,
-        //enum: ['USER', 'ADMIN', 'PRESENTER'],
-        //default: 'USER'
+        type: String,
+        required: true
+        // enum: ['USER', 'ADMIN', 'PRESENTER'],
+        // default: 'USER'
     },
     createdAt: {
         type: Date,
@@ -39,4 +39,4 @@ var user = db.Schema({
 })
 
 
-module.exports = db.model('User', user)
+module.exports = db.model("User", user)

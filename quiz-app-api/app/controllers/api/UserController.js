@@ -1,8 +1,8 @@
 const ResourceController = require("../ResourceController");
-const User = require('../../models/user')
-var bcrypt = require('bcryptjs')
-var jwt = require('jwt-simple')
-var config = require('../../../config/config.js')
+const { User } = require("../../models")
+var bcrypt = require("bcryptjs")
+var jwt = require("jwt-simple")
+var config = require("../../../config/config.js")
 
 
 class UserController extends ResourceController {
@@ -61,10 +61,10 @@ user = {
             })
     },
     signin: (req, res, next) => {
-        if (!req.headers['x-auth']) {
+        if (!req.headers["x-auth"]) {
             return res.send(401, "You must send a valid header")
         }
-        var auth = jwt.decode(req.headers['x-auth'], config.secret)
+        var auth = jwt.decode(req.headers["x-auth"], config.secret)
         User.findOne({
             "email": auth.email
         },

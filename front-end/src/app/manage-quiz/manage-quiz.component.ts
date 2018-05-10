@@ -9,7 +9,7 @@ import {AuthService} from '../services/authservice.service';
 export class ManageQuizComponent implements OnInit {
 
   ngOnInit() {
-    
+
       }
   constructor(private auth: AuthService) {
 

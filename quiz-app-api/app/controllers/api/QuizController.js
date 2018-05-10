@@ -1,5 +1,5 @@
 const ResourceController = require("../ResourceController");
-const Quiz = require('../../models/quiz')
+const { Quiz } = require('../../models')
 
 class QuizController extends ResourceController {
     constructor(...args) {
@@ -7,7 +7,7 @@ class QuizController extends ResourceController {
     }
     // update(req, res) {
     //     res.send('update called from class')
-    // }        
+    // }
 }
 var qc = new QuizController(Quiz);
 qc.list();

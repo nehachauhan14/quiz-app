@@ -1,14 +1,18 @@
 var db = require("./db")
 
 var quiz = db.Schema({
-    "quizName": {
+    quizName: {
         "type": String,
         "required": true,
     },
-    "year": {
+    year: {
         "type": String
     },
-    "createdAt": {
+    rounds: [{
+        type: db.Schema.Types.ObjectId,
+        ref: 'Round',
+    }],
+    createdAt: {
         "type": Date,
         "default": new Date(),
     }

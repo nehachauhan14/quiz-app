@@ -7,7 +7,7 @@
       </mat-card-title>
       <form  [formGroup]="loginform">
         <mat-card-content>
-          
+
           <div class="edit-container">
             <mat-form-field>
               <input
@@ -16,19 +16,19 @@
               formControlName="email"
               placeholder="Enter Email Address"
               />
-              <mat-error *ngIf="email.touched && email.invalid"> 
+              <mat-error *ngIf="email.touched && email.invalid">
                <mat-error *ngIf="email.errors.required">Email-id is required</mat-error>
                <mat-error *ngIf="email.errors.onlycygrpallowed">Invalid email id</mat-error>
-             </mat-error>   
+             </mat-error>
            </mat-form-field>
          </div>
          <div class="edit-container">
           <mat-form-field>
-            <input 
+            <input
             type="password"
-            matInput 
+            matInput
             formControlName="password"
-            placeholder="Enter Password" 
+            placeholder="Enter Password"
             />
             <mat-error *ngIf="password.touched && password.invalid">
               <mat-error *ngIf="password.errors.required">

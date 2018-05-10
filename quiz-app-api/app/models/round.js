@@ -5,21 +5,17 @@ var round = db.Schema({
         type: String,
         required: true,
     },
-    questions: {
-        [{
-        	type: mongoose.Schema.Types.ObjectId,
-            ref: 'Category'
-            count: Number,
-            
-        }]
-    },
+    category: [{
+        type: db.Schema.Types.ObjectId,
+        ref: 'Category',
+        count: Number
+    }],
 
     weightage: {
-        type: Number,
-        default: new Date(),
+        type: Number
     },
-     type: {
-        type: String
+    type: {
+        type: String,
         required: true,
         enum: ['BUZZER', 'PASS', 'TIMER'],
         default: 'TIMER'
@@ -34,4 +30,4 @@ var round = db.Schema({
     }
 })
 
-module.exports = db.model('Round', round)
+module.exports = db.model('Round', round);

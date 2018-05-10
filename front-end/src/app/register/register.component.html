@@ -3,18 +3,18 @@
   <div class="col-md-6">
       <mat-card class="">
           <mat-card-title>
-            Sign up 
+            Sign up
           </mat-card-title>
           <form  [formGroup]="form">
             <mat-card-content>
               <div class="edit-container">
                   <mat-form-field>
-                      <input 
-                          type="text" 
+                      <input
+                          type="text"
                           matInput
-                          formControlName="name" 
+                          formControlName="name"
                           class="full-width"
-                          placeholder="Enter User Name" 
+                          placeholder="Enter User Name"
                       />
                       <mat-error *ngIf="name.touched && name.invalid">
         <mat-error *ngIf="name.errors.required">
@@ -36,17 +36,17 @@
                   formControlName="email"
                   placeholder="Enter Email Address"
                 />
-                <mat-error *ngIf="email.touched && email.invalid"> 
+                <mat-error *ngIf="email.touched && email.invalid">
        <mat-error *ngIf="email.errors.required">Email-id is required</mat-error>
        <mat-error *ngIf="email.errors.onlycygrpallowed">Invalid email id</mat-error>
-       
-      </mat-error>   
+
+      </mat-error>
                        </mat-form-field>
               </div>
 
               <div class="edit-container">
               <mat-form-field>
-                <input  
+                <input
                   type="text"
                   matInput
                   formControlName="cgiCode"
@@ -69,7 +69,7 @@
                   <mat-option *ngFor="let role of roles" [value]="role.value">
                     {{role.value}}
                   </mat-option>
-                  
+
 
                 </mat-select>
 <!-- <mat-error *ngIf="role.value.invalid">
@@ -81,11 +81,11 @@ Specify your role</mat-error>
               </div>
               <div class="edit-container">
               <mat-form-field>
-                <input 
+                <input
                   type="password"
-                  matInput 
+                  matInput
                   formControlName="password"
-                  placeholder="Enter Password" 
+                  placeholder="Enter Password"
                 />
               <mat-error *ngIf="password.touched && password.invalid">
         <mat-error *ngIf="password.errors.required">
@@ -98,12 +98,12 @@ Specify your role</mat-error>
               </div>
               <div class="edit-container">
               <mat-form-field>
-                <input 
+                <input
                     type="password"
-                    matInput 
+                    matInput
                     formControlName="confirmPassword"
-                    
-                    placeholder="Confirm Password" 
+
+                    placeholder="Confirm Password"
                   />
                 <mat-error *ngIf="confirmPassword.touched && confirmPassword.invalid ">
 <mat-error *ngIf="confirmPassword.errors.required ">
@@ -112,13 +112,13 @@ Re-enter your password</mat-error>
 Passwords don't match</mat-error>
 </mat-error>
                 </mat-form-field>
-              
+
               </div>
               <div class="button-row">
                 <button mat-raised-button type="submit" (click)="submit(loginForm)" class="btn-orng">Create</button>
                               </div>
             </mat-card-content>
-          
+
           </form>
         </mat-card>
   </div>
