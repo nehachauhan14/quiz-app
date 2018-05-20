@@ -1,29 +1,34 @@
 <form [formGroup]="firstFormGroup" >
-    <h1 mat-dialog-title style="text-align:center">Add Team</h1>
-     <mat-dialog-content>
-      <div class="edit-container">
-        <mat-form-field>
-          <input matInput formControlName="teamName" placeholder="Enter Team Name">
-        </mat-form-field>
-        <div class="row" formArrayName="members"
-             *ngFor="let item of firstFormGroup.get('members').controls; let i = index;">
-          <div class="col-sm-8" [formGroupName]="i" >
-              <mat-form-field>
-                  <input matInput formControlName = "member" #participant  placeholder="Enter Participent name">
-              </mat-form-field>  
-          </div>
+  <h1 mat-dialog-title style="text-align:center">Add Team</h1>
+  <mat-dialog-content>
+    <div class="edit-container">
+      <mat-form-field>
+        <input matInput formControlName="teamName" placeholder="Enter Team Name">
+      </mat-form-field>
+      <div class="row" >
+        <div class="col-sm-6" formArrayName="members"
+        *ngFor="let item of firstFormGroup.get('members').controls; let i = index;">
+        <div [formGroupName]="i" >
+          <mat-form-field>
+            <input matInput formControlName = "member" #participant  placeholder="Enter Participent name">
+          </mat-form-field>  
         </div>
-          <div class="col-sm-4">
-              <a (click)="addMember(participant)" class="point">
-                  <strong> add member + </strong>
-                </a>
-          </div>
       </div>
-    </mat-dialog-content>
-    <div class="button-row">
-    <mat-dialog-actions>
-      <button  mat-raised-button class="btn-orng" type="button" (click) ="submit()" [disabled]="!firstFormGroup.valid" mat-dialog-close >Add</button>
-      <button  mat-raised-button class="btn-orng" type="button" mat-dialog-close>Cancel</button>
-    </mat-dialog-actions>
-  </div>
-  </form>
+    </div>
+    <div>
+      <a (click)="addMember(participant)" class="point">
+        <strong> add member + </strong>
+      </a>
+    </div>
+    <mat-form-field>
+      <input matInput formControlName="password" type="password" placeholder="Set password for team">
+    </mat-form-field>
+</div>
+</mat-dialog-content>
+<div class="button-row">
+  <mat-dialog-actions>
+    <button  mat-raised-button class="btn-orng" type="button" (click) ="submit()" [disabled]="!firstFormGroup.valid" mat-dialog-close >Add</button>
+    <button  mat-raised-button class="btn-orng" type="button" mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</div>
+</form>

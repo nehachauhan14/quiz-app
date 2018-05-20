@@ -23,7 +23,8 @@ export class AddNewTeamDialogComponent implements OnInit {
     this.firstFormGroup = this._fb.group({
       teamName : ['', [Validators.required]] ,
       members : this._fb.array([ this.initMembers()
-      ])
+      ]) ,
+      password : [, [Validators.required]]
   });
   }
 
@@ -42,7 +43,8 @@ export class AddNewTeamDialogComponent implements OnInit {
 submit() {
   const name = this.firstFormGroup.controls.teamName.value ;
   const teamMember = this.firstFormGroup.controls.members.value;
-  console.log(name + ' ' + teamMember );
+  const pwd = this.firstFormGroup.controls.password.value;
+  console.log(name + ' ' + teamMember + ' ' + pwd);
   // Need to access service once created by node team
 }
 
