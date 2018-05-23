@@ -5,21 +5,20 @@
       <mat-form-field>
         <input matInput formControlName="teamName" placeholder="Enter Team Name">
       </mat-form-field>
-      <div class="row" >
-        <div class="col-sm-6" formArrayName="members"
-        *ngFor="let item of firstFormGroup.get('members').controls; let i = index;">
-        <div [formGroupName]="i" >
-          <mat-form-field>
-            <input matInput formControlName = "member" #participant  placeholder="Enter Participent name">
-          </mat-form-field>  
-        </div>
-      </div>
-    </div>
-    <div>
-      <a (click)="addMember(participant)" class="point">
-        <strong> add member + </strong>
-      </a>
-    </div>
+      <mat-form-field class="demo-chip-list">
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let participent of getNonNullMembers()" [selectable]="selectable"
+                     [removable]="removable" (removed)="remove(participent)">  
+              {{participent.value}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Add Participant"
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)"/>
+          </mat-chip-list>
+        </mat-form-field>
     <mat-form-field>
       <input matInput formControlName="password" type="password" placeholder="Set password for team">
     </mat-form-field>
